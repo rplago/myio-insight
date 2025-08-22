@@ -2,41 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* MYIO Smart Infrastructure Design System
+Industrial IoT dashboard with professional monitoring aesthetics
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Dark industrial theme */
+    --background: 210 15% 8%;
+    --foreground: 210 20% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Card system with subtle elevation */
+    --card: 210 15% 10%;
+    --card-foreground: 210 20% 95%;
+    --card-border: 210 15% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Popover and overlays */
+    --popover: 210 15% 12%;
+    --popover-foreground: 210 20% 95%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary brand - Electric blue for actions */
+    --primary: 220 90% 60%;
+    --primary-foreground: 210 15% 8%;
+    --primary-glow: 220 90% 75%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Neutral surface */
+    --secondary: 210 15% 15%;
+    --secondary-foreground: 210 20% 85%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted content */
+    --muted: 210 15% 12%;
+    --muted-foreground: 210 10% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Cyan highlights */
+    --accent: 180 90% 55%;
+    --accent-foreground: 210 15% 8%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Status colors for equipment monitoring */
+    --status-operational: 142 70% 50%;
+    --status-warning: 45 90% 60%;
+    --status-fault: 0 85% 60%;
+    --status-offline: 210 10% 40%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Success/Error states */
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 210 20% 95%;
 
-    --radius: 0.5rem;
+    /* Borders and inputs */
+    --border: 210 15% 15%;
+    --input: 210 15% 12%;
+    --ring: 220 90% 60%;
+
+    /* Energy consumption gradient */
+    --gradient-energy: linear-gradient(135deg, hsl(142 70% 50%), hsl(180 90% 55%));
+    
+    /* Monitoring panel gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(220 90% 60%), hsl(220 90% 75%));
+    --gradient-status: linear-gradient(135deg, hsl(142 70% 50%), hsl(142 70% 65%));
+    
+    /* Glass morphism effects */
+    --glass-surface: hsl(210 15% 10% / 0.8);
+    --glass-border: hsl(210 15% 25% / 0.2);
+
+    /* Shadows and elevation */
+    --shadow-monitoring: 0 4px 24px hsl(210 15% 5% / 0.4);
+    --shadow-glow: 0 0 20px hsl(220 90% 60% / 0.3);
+
+    /* Border radius system */
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,41 +90,70 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Dark mode uses same industrial theme */
+    --background: 210 15% 6%;
+    --foreground: 210 20% 98%;
+    --card: 210 15% 8%;
+    --card-foreground: 210 20% 98%;
+    --border: 210 15% 12%;
+  }
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+  /* Custom utility classes for monitoring dashboard */
+  .status-operational {
+    @apply text-green-400 bg-green-400/10 border-green-400/20;
+  }
+  
+  .status-warning {
+    @apply text-yellow-400 bg-yellow-400/10 border-yellow-400/20;
+  }
+  
+  .status-fault {
+    @apply text-red-400 bg-red-400/10 border-red-400/20;
+  }
+  
+  .status-offline {
+    @apply text-gray-400 bg-gray-400/10 border-gray-400/20;
+  }
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+  /* Glass morphism for panels */
+  .glass-panel {
+    background: var(--glass-surface);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+  }
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+  /* Monitoring grid animations */
+  .monitoring-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+  .monitoring-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+  /* Equipment status indicators */
+  .status-indicator {
+    @apply w-3 h-3 rounded-full animate-pulse;
+  }
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+  .status-indicator.operational {
+    @apply bg-green-400;
+    box-shadow: 0 0 8px hsl(142 70% 50% / 0.6);
+  }
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+  .status-indicator.warning {
+    @apply bg-yellow-400;
+    box-shadow: 0 0 8px hsl(45 90% 60% / 0.6);
+  }
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+  .status-indicator.fault {
+    @apply bg-red-400;
+    box-shadow: 0 0 8px hsl(0 85% 60% / 0.6);
+  }
+
+  .status-indicator.offline {
+    @apply bg-gray-400 animate-none;
   }
 }
 
