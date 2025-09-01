@@ -7,6 +7,15 @@ import {
   AlertTriangle,
   Gauge
 } from "lucide-react";
+import { 
+  AreaChart,
+  Area,
+  XAxis, 
+  YAxis, 
+  CartesianGrid, 
+  Tooltip, 
+  ResponsiveContainer
+} from "recharts";
 
 const waterSystemData = [
   {
@@ -51,6 +60,15 @@ const waterSystemData = [
     status: "operational",
     pressure: 2.1
   }
+];
+
+const waterSystemTrendsData = [
+  { time: "06:00", tank1: 95, tank2: 87, tank3: 92, consumption: 145 },
+  { time: "09:00", tank1: 89, tank2: 81, tank3: 86, consumption: 189 },
+  { time: "12:00", tank1: 76, tank2: 68, tank3: 74, consumption: 234 },
+  { time: "15:00", tank1: 82, tank2: 74, tank3: 79, consumption: 201 },
+  { time: "18:00", tank1: 88, tank2: 79, tank3: 85, consumption: 167 },
+  { time: "21:00", tank1: 91, tank2: 84, tank3: 89, consumption: 134 }
 ];
 
 const getStatusColor = (status: string) => {
@@ -173,6 +191,57 @@ export const WaterSystem = () => {
           </Card>
         ))}
       </div>
+
+      {/* Water System Trends Chart */}
+      <Card className="monitoring-card border-card-border">
+        <CardHeader>
+          <CardTitle className="text-lg font-semibold">Water System Trends</CardTitle>
+          <CardDescription>Tank levels and consumption patterns</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ResponsiveContainer width="100%" height={300}>
+            <AreaChart data={waterSystemTrendsData}>
+              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+              <XAxis dataKey="time" stroke="hsl(var(--muted-foreground))" />
+              <YAxis stroke="hsl(var(--muted-foreground))" />
+              <Tooltip 
+                contentStyle={{ 
+                  backgroundColor: "hsl(var(--card))", 
+                  border: "1px solid hsl(var(--border))",
+                  borderRadius: "0.75rem"
+                }} 
+              />
+              <Area 
+                type="monotone" 
+                dataKey="tank1" 
+                stackId="1"
+                stroke="#06B6D4" 
+                fill="#06B6D4"
+                fillOpacity={0.3}
+                name="Cisterna Principal (%)"
+              />
+              <Area 
+                type="monotone" 
+                dataKey="tank2" 
+                stackId="2"
+                stroke="#0EA5E9" 
+                fill="#0EA5E9"
+                fillOpacity={0.3}
+                name="Caixa d'água Superior (%)"
+              />
+              <Area 
+                type="monotone" 
+                dataKey="tank3" 
+                stackId="3"
+                stroke="#3B82F6" 
+                fill="#3B82F6"
+                fillOpacity={0.3}
+                name="Reserva (%)"
+              />
+            </AreaChart>
+          </ResponsiveContainer>
+        </CardContent>
+      </Card>
     </div>
   );
 };
