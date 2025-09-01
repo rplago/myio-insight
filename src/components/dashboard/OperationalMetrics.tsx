@@ -201,56 +201,6 @@ export const OperationalMetrics = () => {
           </CardContent>
         </Card>
 
-        {/* Water System Monitoring */}
-        <Card className="monitoring-card border-card-border">
-          <CardHeader>
-            <CardTitle className="text-lg font-semibold">Water System Status</CardTitle>
-            <CardDescription>Tank levels and consumption patterns</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
-              <AreaChart data={waterSystemData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                <XAxis dataKey="time" stroke="hsl(var(--muted-foreground))" />
-                <YAxis stroke="hsl(var(--muted-foreground))" />
-                <Tooltip 
-                  contentStyle={{ 
-                    backgroundColor: "hsl(var(--card))", 
-                    border: "1px solid hsl(var(--border))",
-                    borderRadius: "0.75rem"
-                  }} 
-                />
-                <Area 
-                  type="monotone" 
-                  dataKey="tank1" 
-                  stackId="1"
-                  stroke="#06B6D4" 
-                  fill="#06B6D4"
-                  fillOpacity={0.3}
-                  name="Tank 1 (%)"
-                />
-                <Area 
-                  type="monotone" 
-                  dataKey="tank2" 
-                  stackId="2"
-                  stroke="#0EA5E9" 
-                  fill="#0EA5E9"
-                  fillOpacity={0.3}
-                  name="Tank 2 (%)"
-                />
-                <Area 
-                  type="monotone" 
-                  dataKey="tank3" 
-                  stackId="3"
-                  stroke="#3B82F6" 
-                  fill="#3B82F6"
-                  fillOpacity={0.3}
-                  name="Tank 3 (%)"
-                />
-              </AreaChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
       </div>
 
       {/* Environmental Sensors Status */}

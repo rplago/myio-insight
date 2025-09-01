@@ -102,7 +102,7 @@ const Index = () => {
           <TabsContent value="environmental" className="space-y-6">
             <div>
               <h2 className="text-xl font-semibold text-foreground">Environmental Monitoring</h2>
-              <p className="text-muted-foreground">Temperature, humidity, and air quality sensors</p>
+              <p className="text-muted-foreground">Temperature sensors</p>
             </div>
             <OperationalMetrics />
           </TabsContent>
