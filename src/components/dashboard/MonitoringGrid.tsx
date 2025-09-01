@@ -97,6 +97,23 @@ const getStatusColor = (status: string) => {
   }
 };
 
+const getEquipmentCardClass = (status: string) => {
+  switch (status) {
+    case "fault": return "monitoring-card border-card-border equipment-critical";
+    case "warning": return "monitoring-card border-card-border equipment-warning";
+    default: return "monitoring-card border-card-border";
+  }
+};
+
+const getStatusIcon = (status: string) => {
+  switch (status) {
+    case "fault": return "❌";
+    case "warning": return "⚠️";
+    case "operational": return "✅";
+    default: return "⭕";
+  }
+};
+
 const getStatusText = (status: string) => {
   switch (status) {
     case "operational": return "Operational";
@@ -113,7 +130,7 @@ export const MonitoringGrid = () => {
         const IconComponent = equipment.icon;
         
         return (
-          <Card key={equipment.id} className="monitoring-card border-card-border">
+          <Card key={equipment.id} className={getEquipmentCardClass(equipment.status)}>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 bg-secondary rounded-lg flex items-center justify-center">
@@ -133,6 +150,7 @@ export const MonitoringGrid = () => {
               {/* Status and Key Metrics */}
               <div className="flex items-center justify-between">
                 <Badge className={getStatusColor(equipment.status)}>
+                  <span className="mr-1">{getStatusIcon(equipment.status)}</span>
                   <div className={`status-indicator ${equipment.status} mr-2`} />
                   {getStatusText(equipment.status)}
                 </Badge>

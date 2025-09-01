@@ -7,6 +7,7 @@ import { MonitoringGrid } from "@/components/dashboard/MonitoringGrid";
 import { OperationalMetrics } from "@/components/dashboard/OperationalMetrics";
 import { EnergyConsumption } from "@/components/dashboard/EnergyConsumption";
 import { SystemOverview } from "@/components/dashboard/SystemOverview";
+import { WaterSystem } from "@/components/dashboard/WaterSystem";
 import { Building2, Zap, Thermometer, Droplets, Filter, Download } from "lucide-react";
 
 const Index = () => {
@@ -49,10 +50,14 @@ const Index = () => {
 
         {/* Tabbed Dashboard Content */}
         <Tabs defaultValue="monitoring" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-3 lg:w-96">
+          <TabsList className="grid w-full grid-cols-4 lg:w-[520px]">
             <TabsTrigger value="monitoring" className="gap-2">
               <Building2 className="w-4 h-4" />
               Equipment
+            </TabsTrigger>
+            <TabsTrigger value="water" className="gap-2">
+              <Droplets className="w-4 h-4" />
+              Water
             </TabsTrigger>
             <TabsTrigger value="energy" className="gap-2">
               <Zap className="w-4 h-4" />
@@ -76,6 +81,14 @@ const Index = () => {
               </Button>
             </div>
             <MonitoringGrid />
+          </TabsContent>
+
+          <TabsContent value="water" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold text-foreground">Water System Management</h2>
+              <p className="text-muted-foreground">Tank levels, flow monitoring and hydrometers</p>
+            </div>
+            <WaterSystem />
           </TabsContent>
 
           <TabsContent value="energy" className="space-y-6">

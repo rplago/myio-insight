@@ -9,40 +9,40 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Dark industrial theme */
-    --background: 210 15% 8%;
-    --foreground: 210 20% 95%;
+    /* MYIO Custom Color Palette */
+    --background: 60 14% 99%;
+    --foreground: 210 15% 8%;
 
     /* Card system with subtle elevation */
-    --card: 210 15% 10%;
-    --card-foreground: 210 20% 95%;
-    --card-border: 210 15% 15%;
+    --card: 60 14% 97%;
+    --card-foreground: 210 15% 8%;
+    --card-border: 210 15% 85%;
 
     /* Popover and overlays */
-    --popover: 210 15% 12%;
-    --popover-foreground: 210 20% 95%;
+    --popover: 60 14% 99%;
+    --popover-foreground: 210 15% 8%;
 
-    /* Primary brand - Electric blue for actions */
-    --primary: 220 90% 60%;
-    --primary-foreground: 210 15% 8%;
-    --primary-glow: 220 90% 75%;
+    /* Primary brand - MYIO Blue */
+    --primary: 209 71% 36%;
+    --primary-foreground: 60 14% 99%;
+    --primary-glow: 209 71% 50%;
 
-    /* Secondary - Neutral surface */
-    --secondary: 210 15% 15%;
-    --secondary-foreground: 210 20% 85%;
+    /* Secondary - MYIO Green */
+    --secondary: 70 50% 50%;
+    --secondary-foreground: 60 14% 99%;
 
     /* Muted content */
-    --muted: 210 15% 12%;
-    --muted-foreground: 210 10% 65%;
+    --muted: 210 15% 85%;
+    --muted-foreground: 210 15% 40%;
 
-    /* Accent - Cyan highlights */
-    --accent: 180 90% 55%;
-    --accent-foreground: 210 15% 8%;
+    /* Accent - Green highlights */
+    --accent: 70 50% 50%;
+    --accent-foreground: 60 14% 99%;
 
     /* Status colors for equipment monitoring */
-    --status-operational: 142 70% 50%;
-    --status-warning: 45 90% 60%;
-    --status-fault: 0 85% 60%;
+    --status-operational: 70 50% 50%;
+    --status-warning: 21 80% 54%;
+    --status-fault: 357 73% 49%;
     --status-offline: 210 10% 40%;
 
     /* Success/Error states */
@@ -90,29 +90,40 @@ All colors MUST be HSL.
   }
 
   .dark {
-    /* Dark mode uses same industrial theme */
-    --background: 210 15% 6%;
-    --foreground: 210 20% 98%;
-    --card: 210 15% 8%;
-    --card-foreground: 210 20% 98%;
-    --border: 210 15% 12%;
+    /* Dark mode - inverted MYIO theme */
+    --background: 210 15% 8%;
+    --foreground: 60 14% 99%;
+    --card: 210 15% 10%;
+    --card-foreground: 60 14% 99%;
+    --border: 210 15% 15%;
   }
 
   /* Custom utility classes for monitoring dashboard */
   .status-operational {
-    @apply text-green-400 bg-green-400/10 border-green-400/20;
+    @apply text-status-operational bg-status-operational/10 border-status-operational/20;
   }
   
   .status-warning {
-    @apply text-yellow-400 bg-yellow-400/10 border-yellow-400/20;
+    @apply text-status-warning bg-status-warning/10 border-status-warning/20;
   }
   
   .status-fault {
-    @apply text-red-400 bg-red-400/10 border-red-400/20;
+    @apply text-status-fault bg-status-fault/10 border-status-fault/20;
   }
   
   .status-offline {
-    @apply text-gray-400 bg-gray-400/10 border-gray-400/20;
+    @apply text-status-offline bg-status-offline/10 border-status-offline/20;
+  }
+
+  /* Critical equipment alerts */
+  .equipment-critical {
+    @apply border-status-fault bg-status-fault/5;
+    animation: pulse-border 2s ease-in-out infinite;
+  }
+  
+  .equipment-warning {
+    @apply border-status-warning bg-status-warning/5;
+    animation: pulse-border 2s ease-in-out infinite;
   }
 
   /* Glass morphism for panels */
@@ -138,22 +149,34 @@ All colors MUST be HSL.
   }
 
   .status-indicator.operational {
-    @apply bg-green-400;
-    box-shadow: 0 0 8px hsl(142 70% 50% / 0.6);
+    @apply bg-status-operational;
+    box-shadow: 0 0 8px hsl(var(--status-operational) / 0.6);
   }
 
   .status-indicator.warning {
-    @apply bg-yellow-400;
-    box-shadow: 0 0 8px hsl(45 90% 60% / 0.6);
+    @apply bg-status-warning;
+    box-shadow: 0 0 8px hsl(var(--status-warning) / 0.6);
   }
 
   .status-indicator.fault {
-    @apply bg-red-400;
-    box-shadow: 0 0 8px hsl(0 85% 60% / 0.6);
+    @apply bg-status-fault;
+    box-shadow: 0 0 8px hsl(var(--status-fault) / 0.6);
   }
 
   .status-indicator.offline {
-    @apply bg-gray-400 animate-none;
+    @apply bg-status-offline animate-none;
+  }
+
+  /* Pulsing border animation for critical equipment */
+  @keyframes pulse-border {
+    0%, 100% {
+      border-color: hsl(var(--status-fault) / 0.3);
+      box-shadow: 0 0 0 0 hsl(var(--status-fault) / 0.7);
+    }
+    50% {
+      border-color: hsl(var(--status-fault) / 0.8);
+      box-shadow: 0 0 0 4px hsl(var(--status-fault) / 0);
+    }
   }
 }
 
