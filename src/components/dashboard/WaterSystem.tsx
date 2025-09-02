@@ -38,7 +38,7 @@ const waterSystemData = [
     capacity: 5000,
     height: 180,
     maxHeight: 400,
-    status: "warning",
+    status: "alerta",
     flow: 8.2,
     lastMaintenance: "2024-01-15"
   },
@@ -100,7 +100,7 @@ export const WaterSystem = () => {
     <div className="space-y-6">
       <div className="flex items-center gap-2">
         <Droplets className="h-6 w-6 text-primary" />
-        <h2 className="text-2xl font-bold text-foreground">Sistema Hídrico</h2>
+        <h2 className="text-2xl font-bold text-foreground">Sistema de Água</h2>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -173,10 +173,6 @@ export const WaterSystem = () => {
                       <div className="text-xs text-muted-foreground mb-1">Vazão Atual</div>
                       <div className="text-lg font-semibold text-foreground">{item.flow} L/min</div>
                     </div>
-                    <div>
-                      <div className="text-xs text-muted-foreground mb-1">Pressão</div>
-                      <div className="text-sm font-medium text-foreground">{item.pressure} bar</div>
-                    </div>
                   </div>
 
                   <div className="pt-2 border-t border-border">
@@ -195,8 +191,8 @@ export const WaterSystem = () => {
       {/* Water System Trends Chart */}
       <Card className="monitoring-card border-card-border">
         <CardHeader>
-          <CardTitle className="text-lg font-semibold">Water System Trends</CardTitle>
-          <CardDescription>Tank levels and consumption patterns</CardDescription>
+          <CardTitle className="text-lg font-semibold">Tendências do Sistema Hídrico</CardTitle>
+          <CardDescription>Níveis do tanque e padrões de consumo</CardDescription>
         </CardHeader>
         <CardContent>
           <ResponsiveContainer width="100%" height={300}>

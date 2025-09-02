@@ -45,7 +45,7 @@ const waterSystemData = [
 
 const environmentalData = [
   {
-    zone: "3rd Floor – Food Court",
+    zone: "L3 – Praça de Alimentação",
     sensorId: "TH-FC-01",
     temperature: 24.5,
     energyConsumption: 15.2,
@@ -53,7 +53,7 @@ const environmentalData = [
     status: "operational"
   },
   {
-    zone: "B1 – Parking Area", 
+    zone: "Estacionamento", 
     sensorId: "TH-PK-01",
     temperature: 22.1,
     energyConsumption: 8.7,
@@ -61,7 +61,7 @@ const environmentalData = [
     status: "operational"
   },
   {
-    zone: "Ground Floor – Main Lobby",
+    zone: "Térreo – Área Comum Sul",
     sensorId: "TH-LB-01",
     temperature: 25.8,
     energyConsumption: 22.4,
@@ -69,7 +69,7 @@ const environmentalData = [
     status: "operational"
   },
   {
-    zone: "3rd Floor – Meeting Room",
+    zone: "L2 – Área Comum Norte",
     sensorId: "TH-MR-03",
     temperature: 28.2,
     energyConsumption: 18.9,
@@ -100,16 +100,16 @@ export const OperationalMetrics = () => {
   return (
     <div className="space-y-6">
       {/* Environmental Overview */}
-      <div className="grid gap-4 md:grid-cols-4">
+      <div className="grid gap-4 md:grid-cols-3">
         <Card className="monitoring-card border-card-border">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Avg Temperature</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground">Temperatura Média</CardTitle>
             <Thermometer className="h-4 w-4 text-blue-400" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-foreground">22.8°C</div>
             <div className="text-xs text-muted-foreground mt-1">
-              Target: 23°C ± 2°C
+              Meta: 23°C ± 2°C
             </div>
             <Progress value={85} className="mt-2 h-2" />
           </CardContent>
@@ -117,7 +117,7 @@ export const OperationalMetrics = () => {
 
         <Card className="monitoring-card border-card-border">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Energy Consumption</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground">Consumo de Energia HVAC</CardTitle>
             <Zap className="h-4 w-4 text-primary" />
           </CardHeader>
           <CardContent>
@@ -131,28 +131,28 @@ export const OperationalMetrics = () => {
 
         <Card className="monitoring-card border-card-border">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Runtime Status</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground">Em Operação</CardTitle>
             <Clock className="h-4 w-4 text-secondary" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-foreground">14h 25m</div>
             <div className="text-xs text-muted-foreground mt-1">
-              Average Runtime
+              Tempo médio de execução
             </div>
             <Badge className="status-operational mt-2">
               <CheckCircle className="w-3 h-3 mr-1" />
-              Active
+              Ativo
             </Badge>
           </CardContent>
         </Card>
       </div>
 
       {/* Temperature Monitoring Chart */}
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid gap-6 lg:grid-cols-1">
         <Card className="monitoring-card border-card-border">
           <CardHeader>
-            <CardTitle className="text-lg font-semibold">Temperature Zones</CardTitle>
-            <CardDescription>Real-time temperature monitoring across building zones</CardDescription>
+            <CardTitle className="text-lg font-semibold">Temperatura nos Ambientes</CardTitle>
+            <CardDescription>Monitoramento de temperatura em tempo real em todas as áreas</CardDescription>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
@@ -172,21 +172,21 @@ export const OperationalMetrics = () => {
                   dataKey="zone1" 
                   stroke="#3B82F6" 
                   strokeWidth={2}
-                  name="Food Court"
+                  name="L3 – Praça de Alimentação"
                 />
                 <Line 
                   type="monotone" 
                   dataKey="zone2" 
                   stroke="#10B981" 
                   strokeWidth={2}
-                  name="Retail L1"
+                  name="Estacionamento"
                 />
                 <Line 
                   type="monotone" 
                   dataKey="zone3" 
                   stroke="#F59E0B" 
                   strokeWidth={2}
-                  name="Retail L2"
+                  name="Térreo – Área Comum Sul"
                 />
                 <Line 
                   type="monotone" 
@@ -194,7 +194,7 @@ export const OperationalMetrics = () => {
                   stroke="#6B7280" 
                   strokeWidth={2}
                   strokeDasharray="5 5"
-                  name="Outdoor"
+                  name="L2 – Área Comum Norte"
                 />
               </LineChart>
             </ResponsiveContainer>
@@ -206,8 +206,8 @@ export const OperationalMetrics = () => {
       {/* Environmental Sensors Status */}
       <Card className="monitoring-card border-card-border">
         <CardHeader>
-          <CardTitle className="text-lg font-semibold">Environmental Sensors</CardTitle>
-          <CardDescription>Real-time status of all environmental sensors</CardDescription>
+          <CardTitle className="text-lg font-semibold">Sensores de ambientes</CardTitle>
+          <CardDescription>Status em tempo real de todos os sensores</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -222,15 +222,15 @@ export const OperationalMetrics = () => {
                 </div>
                 <div className="grid grid-cols-3 gap-4 text-right">
                   <div>
-                    <div className="text-xs text-muted-foreground">Temp</div>
+                    <div className="text-xs text-muted-foreground">Temperatura</div>
                     <div className="text-sm font-medium text-foreground">{env.temperature}°C</div>
                   </div>
                   <div>
-                    <div className="text-xs text-muted-foreground">Energy</div>
+                    <div className="text-xs text-muted-foreground">Energia</div>
                     <div className="text-sm font-medium text-foreground">{env.energyConsumption} kW</div>
                   </div>
                   <div>
-                    <div className="text-xs text-muted-foreground">Runtime</div>
+                    <div className="text-xs text-muted-foreground">Operação</div>
                     <div className="text-sm font-medium text-foreground">{env.runtime}</div>
                   </div>
                 </div>

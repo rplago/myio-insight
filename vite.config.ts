@@ -8,6 +8,11 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    allowedHosts: [
+      'localhost',
+      '127.0.0.1',
+      'f6844d4d0fb2.ngrok-free.app' // ✅ adicione seu host do ngrok aqui
+    ]
   },
   plugins: [
     react(),

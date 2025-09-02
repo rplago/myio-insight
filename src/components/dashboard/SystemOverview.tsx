@@ -18,7 +18,7 @@ export const SystemOverview = () => {
       {/* Equipment Status */}
       <Card className="monitoring-card border-card-border bg-gradient-to-br from-card to-card/80">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium text-muted-foreground">Equipment Status</CardTitle>
+          <CardTitle className="text-sm font-medium text-muted-foreground">Status de Equipmentos</CardTitle>
           <Building2 className="h-4 w-4 text-primary" />
         </CardHeader>
         <CardContent>
@@ -36,7 +36,7 @@ export const SystemOverview = () => {
       {/* Energy Consumption */}
       <Card className="monitoring-card border-card-border bg-gradient-to-br from-card to-card/80">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium text-muted-foreground">Energy Usage</CardTitle>
+          <CardTitle className="text-sm font-medium text-muted-foreground">Consumo de Energia</CardTitle>
           <Zap className="h-4 w-4 text-accent" />
         </CardHeader>
         <CardContent>
@@ -44,11 +44,11 @@ export const SystemOverview = () => {
           <div className="flex items-center gap-1 mt-2">
             <TrendingDown className="h-3 w-3 text-status-operational" />
             <p className="text-xs text-status-operational">
-              -8% from yesterday
+              -8% desde ontem
             </p>
           </div>
           <div className="text-xs text-muted-foreground mt-1">
-            Peak: 1,892 kW at 14:30
+            Pico: 1.8 kW às 14:30
           </div>
         </CardContent>
       </Card>
@@ -56,7 +56,7 @@ export const SystemOverview = () => {
       {/* Temperature Control */}
       <Card className="monitoring-card border-card-border bg-gradient-to-br from-card to-card/80">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium text-muted-foreground">Avg Temperature</CardTitle>
+          <CardTitle className="text-sm font-medium text-muted-foreground">Média de Temperatura</CardTitle>
           <Thermometer className="h-4 w-4 text-blue-400" />
         </CardHeader>
         <CardContent>
@@ -64,11 +64,11 @@ export const SystemOverview = () => {
           <div className="flex items-center gap-1 mt-2">
             <CheckCircle className="h-3 w-3 text-status-operational" />
             <p className="text-xs text-status-operational">
-              Within optimal range
+              Dentro da faixa ideal
             </p>
           </div>
           <div className="text-xs text-muted-foreground mt-1">
-            Range: 20°C - 25°C
+            Faixa: 20°C - 25°C
           </div>
         </CardContent>
       </Card>
@@ -76,7 +76,7 @@ export const SystemOverview = () => {
       {/* Water Systems */}
       <Card className="monitoring-card border-card-border bg-gradient-to-br from-card to-card/80">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium text-muted-foreground">Water Systems</CardTitle>
+          <CardTitle className="text-sm font-medium text-muted-foreground">Sistema de Água</CardTitle>
           <Droplets className="h-4 w-4 text-cyan-400" />
         </CardHeader>
         <CardContent>
@@ -84,7 +84,7 @@ export const SystemOverview = () => {
           <div className="flex items-center gap-1 mt-2">
             <AlertTriangle className="h-3 w-3 text-status-warning" />
             <p className="text-xs text-status-warning">
-              Tank 2 at 68%
+              Cisterna Principal 2 com 68%
             </p>
           </div>
           <Progress value={87} className="mt-3 h-2" />

@@ -35,20 +35,21 @@ const hourlyData = [
 ];
 
 const zoneData = [
-  { zone: "Food Court", consumption: 245, efficiency: 85, area: 1200 },
-  { zone: "Retail Level 1", consumption: 189, efficiency: 92, area: 1800 },
-  { zone: "Retail Level 2", consumption: 156, efficiency: 88, area: 1600 },
-  { zone: "Parking", consumption: 98, efficiency: 78, area: 2400 },
-  { zone: "Common Areas", consumption: 134, efficiency: 91, area: 800 },
-  { zone: "Offices", consumption: 87, efficiency: 94, area: 600 }
+  { zone: "Praça de alimentação", consumption: 245, efficiency: 85, area: 1200 },
+  { zone: "L1", consumption: 189, efficiency: 92, area: 1800 },
+  { zone: "L2", consumption: 156, efficiency: 88, area: 1600 },
+  { zone: "Estacionamento", consumption: 98, efficiency: 78, area: 2400 },
+  { zone: "Área Comum", consumption: 134, efficiency: 91, area: 800 },
+  { zone: "Administração", consumption: 87, efficiency: 94, area: 600 }
 ];
 
 const distributionData = [
-  { name: "HVAC", value: 45, color: "#3B82F6" },
-  { name: "Lighting", value: 25, color: "#10B981" },
-  { name: "Elevators", value: 15, color: "#F59E0B" },
-  { name: "Equipment", value: 10, color: "#EF4444" },
-  { name: "Other", value: 5, color: "#8B5CF6" }
+  { name: "HVAC", value: 35, color: "#3B82F6" },
+  { name: "Iluminação", value: 10, color: "#10B981" },
+  { name: "Elevadores", value: 15, color: "#F59E0B" },
+  { name: "Equipamentos", value: 10, color: "#EF4444" },
+  { name: "Lojas", value: 25, color: "#8B5CF6" },
+  { name: "Área Comum", value: 5, color: "#c5e275ff" }
 ];
 
 export const EnergyConsumption = () => {
@@ -58,7 +59,7 @@ export const EnergyConsumption = () => {
       <div className="grid gap-4 md:grid-cols-3">
         <Card className="monitoring-card border-card-border">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Total Consumption</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground">Consumo Total</CardTitle>
             <Zap className="h-4 w-4 text-accent" />
           </CardHeader>
           <CardContent>
@@ -66,7 +67,7 @@ export const EnergyConsumption = () => {
             <div className="flex items-center gap-1 mt-2">
               <TrendingDown className="h-3 w-3 text-status-operational" />
               <p className="text-xs text-status-operational">
-                -12% vs last month
+                -12% vs mês anterior
               </p>
             </div>
           </CardContent>
@@ -74,15 +75,15 @@ export const EnergyConsumption = () => {
 
         <Card className="monitoring-card border-card-border">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Peak Demand</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground">Pico de Demanda</CardTitle>
             <TrendingUp className="h-4 w-4 text-status-warning" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-foreground">1,892 kW</div>
+            <div className="text-2xl font-bold text-foreground">1.892 kW</div>
             <div className="flex items-center gap-1 mt-2">
               <TrendingUp className="h-3 w-3 text-status-warning" />
               <p className="text-xs text-status-warning">
-                +5% vs yesterday
+                +5% vs ontem
               </p>
             </div>
           </CardContent>
@@ -90,14 +91,14 @@ export const EnergyConsumption = () => {
 
         <Card className="monitoring-card border-card-border">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Efficiency Score</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground">Meta x Consumo Real</CardTitle>
             <Building className="h-4 w-4 text-status-operational" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-foreground">87%</div>
             <Progress value={87} className="mt-3 h-2" />
             <p className="text-xs text-muted-foreground mt-2">
-              Above industry average
+              Acima da meta de 85%
             </p>
           </CardContent>
         </Card>
@@ -108,8 +109,8 @@ export const EnergyConsumption = () => {
         {/* Hourly Consumption Trend */}
         <Card className="monitoring-card border-card-border">
           <CardHeader>
-            <CardTitle className="text-lg font-semibold">24-Hour Consumption</CardTitle>
-            <CardDescription>Real-time energy usage and demand forecasting</CardDescription>
+            <CardTitle className="text-lg font-semibold">Consumo de 24 horas</CardTitle>
+            <CardDescription>Meta x Consumo Real em tempo real</CardDescription>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
@@ -147,8 +148,8 @@ export const EnergyConsumption = () => {
         {/* Energy Distribution */}
         <Card className="monitoring-card border-card-border">
           <CardHeader>
-            <CardTitle className="text-lg font-semibold">Energy Distribution</CardTitle>
-            <CardDescription>Breakdown by system type</CardDescription>
+            <CardTitle className="text-lg font-semibold">Distribuição de Energia</CardTitle>
+            <CardDescription>Detalhamento por tipo de sistema</CardDescription>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
@@ -177,8 +178,8 @@ export const EnergyConsumption = () => {
       {/* Zone Consumption Table */}
       <Card className="monitoring-card border-card-border">
         <CardHeader>
-          <CardTitle className="text-lg font-semibold">Zone Performance</CardTitle>
-          <CardDescription>Energy consumption and efficiency by area</CardDescription>
+          <CardTitle className="text-lg font-semibold">Ambientes x Performance</CardTitle>
+          <CardDescription>Consumo e eficiência energética por área</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -204,15 +205,15 @@ export const EnergyConsumption = () => {
                   
                   <div className="text-right min-w-[80px]">
                     <div className="font-semibold text-foreground">{zone.efficiency}%</div>
-                    <div className="text-xs text-muted-foreground">Efficiency</div>
+                    <div className="text-xs text-muted-foreground">Eficiência</div>
                   </div>
                   
                   <Badge 
                     className={zone.efficiency >= 90 ? "status-operational" : 
                               zone.efficiency >= 80 ? "status-warning" : "status-fault"}
                   >
-                    {zone.efficiency >= 90 ? "Excellent" : 
-                     zone.efficiency >= 80 ? "Good" : "Needs Attention"}
+                    {zone.efficiency >= 90 ? "Excelente" : 
+                     zone.efficiency >= 80 ? "Bom" : "Precisa de Atenção"}
                   </Badge>
                 </div>
               </div>

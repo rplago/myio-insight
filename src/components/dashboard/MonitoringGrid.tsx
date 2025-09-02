@@ -16,7 +16,7 @@ import {
 const equipmentData = [
   {
     id: "ESC-001",
-    name: "Main Escalator A",
+    name: "Escada Rolante Sul 02",
     type: "escalator",
     status: "operational",
     consumption: 15.2,
@@ -28,7 +28,7 @@ const equipmentData = [
   },
   {
     id: "ELV-002",
-    name: "Elevator Bank 1",
+    name: "Elevdtor Social Norte 01",
     type: "elevator",
     status: "operational",
     consumption: 22.8,
@@ -40,7 +40,7 @@ const equipmentData = [
   },
   {
     id: "CHIL-001",
-    name: "Primary Chiller",
+    name: "Chiller 01",
     type: "chiller",
     status: "warning",
     consumption: 145.6,
@@ -52,7 +52,7 @@ const equipmentData = [
   },
   {
     id: "PUMP-001",
-    name: "Main Water Pump",
+    name: "Bomba de água principal",
     type: "pump",
     status: "operational",
     consumption: 8.3,
@@ -64,7 +64,7 @@ const equipmentData = [
   },
   {
     id: "AC-001",
-    name: "HVAC Zone A",
+    name: "HVAC Praça de Alimentação",
     type: "hvac",
     status: "operational",
     consumption: 67.4,
@@ -116,9 +116,9 @@ const getStatusIcon = (status: string) => {
 
 const getStatusText = (status: string) => {
   switch (status) {
-    case "operational": return "Operational";
-    case "warning": return "Warning";
-    case "fault": return "Fault";
+    case "operational": return "Em operação";
+    case "warning": return "Alerta";
+    case "fault": return "Falha";
     default: return "Offline";
   }
 };
@@ -158,14 +158,14 @@ export const MonitoringGrid = () => {
                   <div className="text-lg font-semibold text-foreground">
                     {equipment.consumption} kW
                   </div>
-                  <div className="text-xs text-muted-foreground">Current</div>
+                  <div className="text-xs text-muted-foreground">Atual</div>
                 </div>
               </div>
 
               {/* Efficiency Progress */}
               <div>
                 <div className="flex justify-between text-sm mb-1">
-                  <span className="text-muted-foreground">Efficiency</span>
+                  <span className="text-muted-foreground">Eficiência</span>
                   <span className="text-foreground font-medium">{equipment.efficiency}%</span>
                 </div>
                 <Progress value={equipment.efficiency} className="h-2" />
@@ -176,14 +176,14 @@ export const MonitoringGrid = () => {
                 <div>
                   <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1">
                     <Thermometer className="w-3 h-3" />
-                    Temperature
+                    Temperatura
                   </div>
                   <div className="text-sm font-medium text-foreground">{equipment.temperature}°C</div>
                 </div>
                 <div>
                   <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1">
                     <Activity className="w-3 h-3" />
-                    Runtime
+                    Tempo de operação
                   </div>
                   <div className="text-sm font-medium text-foreground">
                     {equipment.operationalHours.toLocaleString()}h
